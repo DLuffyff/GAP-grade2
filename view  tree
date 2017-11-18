@@ -1,0 +1,151 @@
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct BiT {
+   char date;
+   struct BiT *lchild,*rchild;
+}BiTNode,*BiTree;
+
+int creat(BiTree &T){
+   char ch;
+   scanf("%c",&ch);
+   if(ch==' ')T=NULL;	
+	else{
+		if(!(T=(BiTNode *)malloc(sizeof(BiTNode))))return 0;
+		T->date=ch;
+		creat(T->lchild);
+		creat(T->rchild);
+	}
+	return 1;
+} 
+
+int visit(char e)
+{
+	printf("%c",e);
+	return 1;
+}
+int fPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(visit(T->date))
+		 if(fPreOrder(T->lchild,visit))
+		  if(fPreOrder(T->rchild,visit))   return 1;
+		 return 0; 
+	}else return 1;
+}
+int sPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(sPreOrder(T->lchild,visit))
+		 if(visit(T->date))
+		  if(sPreOrder(T->rchild,visit))   return 1;
+		  return 0; 
+	}else return 1;
+}
+
+int tPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(tPreOrder(T->lchild,visit))
+		 if(tPreOrder(T->rchild,visit))
+		  if(visit(T->date))   return 1;
+		 return 0; 
+	}else return 1;
+}
+int main(){
+    BiT *T;
+	creat(T);
+	printf("The first print root:\n");
+	fPreOrder(T,visit);
+	printf("\nThe seconf print root:\n");
+	sPreOrder(T,visit);
+	printf("\nThe third print root:\n");
+	tPreOrder(T,visit);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct BiT {
+   char date;
+   struct BiT *lchild,*rchild;
+}BiTNode,*BiTree;
+
+int creat(BiTree &T){
+   char ch;
+   scanf("%c",&ch);
+   if(ch==' ')T=NULL;	
+	else{
+		if(!(T=(BiTNode *)malloc(sizeof(BiTNode))))return 0;
+		T->date=ch;
+		creat(T->lchild);
+		creat(T->rchild);
+	}
+	return 1;
+} 
+
+int visit(char e)
+{
+	printf("%c",e);
+	return 1;
+}
+int fPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(visit(T->date))
+		 if(fPreOrder(T->lchild,visit))
+		  if(fPreOrder(T->rchild,visit))   return 1;
+		 return 0; 
+	}else return 1;
+}
+int sPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(sPreOrder(T->lchild,visit))
+		 if(visit(T->date))
+		  if(sPreOrder(T->rchild,visit))   return 1;
+		  return 0; 
+	}else return 1;
+}
+
+int tPreOrder(BiTree T,int (*visit)(char e) )
+{
+	if (T){
+		if(tPreOrder(T->lchild,visit))
+		 if(tPreOrder(T->rchild,visit))
+		  if(visit(T->date))   return 1;
+		 return 0; 
+	}else return 1;
+}
+int main(){
+    BiT *T;
+	creat(T);
+	printf("The first print root:\n");
+	fPreOrder(T,visit);
+	printf("\nThe seconf print root:\n");
+	sPreOrder(T,visit);
+	printf("\nThe third print root:\n");
+	tPreOrder(T,visit);
+	return 0;
+}
